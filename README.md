@@ -8,7 +8,8 @@ It is built natively as a set of micro-services, making development and integrat
 
 ## Examples
 
-```
+Dependencies:
+```toml
 [dependencies]
 tokio = { version = "0.2", features = ["full"] }
 serde_json = "1.0"
@@ -79,12 +80,16 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
 ## Test Environment Set-up
 
-```
+```bash
+# Install database
 docker run -d -p 9925:9925 -v <Host Directory Path>:/opt/harperdb/hdb/ harperdb/hdb
 
-./test_setup.sh
+# Terrform database
+./test_setup.sh 
 
+# Run Test
 cargo test
 
+# Clear Database
 ./test_teardown.sh
 ```
