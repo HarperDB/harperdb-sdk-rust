@@ -6,8 +6,13 @@ HarperDB is a SQL/NoSQL data management platform. It is fully indexed, doesn't d
 It is built natively as a set of micro-services, making development and integration easy and seamless. HarperDB utilizes a single-endpoint for all operations. HarperDB’s RESTful nature makes it stateless, stable, and scalable.
 
 
-# Examples
+## Examples
 
+```
+[dependencies]
+tokio = { version = "0.2", features = ["full"] }
+serde_json = "1.0"
+```
 Basic usage:
 
 ```rust
@@ -72,7 +77,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 }
 ```
 
-# Test Environment Set-up
+## Test Environment Set-up
 
 ```
 docker run -d -p 9925:9925 -v <Host Directory Path>:/opt/harperdb/hdb/ harperdb/hdb
