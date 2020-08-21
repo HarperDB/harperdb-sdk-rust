@@ -6,10 +6,10 @@ use harperdb_sdk_rust::{Harper, HarperConfig};
 
 pub fn get_client() -> Harper {
     let config: HarperConfig = HarperConfig {
-        url: "http://0.0.0.0:9925/".to_string(),
-        username: "HDB_ADMIN".to_string(),
-        password: "password".to_string(),
-        schema: "shop".to_string(),
+        url: "http://0.0.0.0:9925/",
+        username: "HDB_ADMIN",
+        password: "password",
+        schema: "shop",
     };
 
     let harper_client = Harper::new(config);

@@ -11,166 +11,166 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct HarperConfig {
-    pub url: String,
-    pub username: String,
-    pub password: String,
-    pub schema: String,
+    pub url: &'static str,
+    pub username: &'static str,
+    pub password: &'static str,
+    pub schema: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ResponseData {
-    pub status: String,
-    pub status_code: String,
-    pub data: String,
+    pub status: &'static str,
+    pub status_code: &'static str,
+    pub data: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SchemaOption {
-    pub schema: String,
+    pub schema: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct TableOptions {
-    pub table: String,
-    pub schema: String,
+    pub table: &'static str,
+    pub schema: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct CreateTableOptions {
-    pub table: String,
-    pub schema: String,
-    pub hash_attribute: String,
+    pub table: &'static str,
+    pub schema: &'static str,
+    pub hash_attribute: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct AttributeDropOptions {
-    pub table: String,
-    pub schema: String,
-    pub attribute: String,
+    pub table: &'static str,
+    pub schema: &'static str,
+    pub attribute: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct QueryOptions {
-    pub table: String,
-    pub schema: String,
+    pub table: &'static str,
+    pub schema: &'static str,
     pub records: Value, //----------------------------
     // pub records: Vec<serde_json::Value>, //----------------------------
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct RowDeleteOptions {
-    pub table: String,
-    pub schema: String,
+    pub table: &'static str,
+    pub schema: &'static str,
     // pub hash_values: Vec<serde_json::Value>,
-    pub hash_values: Vec<String>,
+    pub hash_values: Vec<&'static str>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct HashSearchOptions {
-    pub table: String,
-    pub schema: String,
-    pub hash_values: Vec<String>,
-    pub get_attributes: Vec<String>,
+    pub table: &'static str,
+    pub schema: &'static str,
+    pub hash_values: Vec<&'static str>,
+    pub get_attributes: Vec<&'static str>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ValueSearchOptions {
-    pub table: String,
-    pub schema: String,
-    pub search_attribute: String,
-    pub search_value: String,
-    pub get_attributes: Vec<String>,
+    pub table: &'static str,
+    pub schema: &'static str,
+    pub search_attribute: &'static str,
+    pub search_value: &'static str,
+    pub get_attributes: Vec<&'static str>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct DataLoadOptions {
-    pub table: String,
-    pub schema: String,
-    pub action: String,
-    pub data: String,
+    pub table: &'static str,
+    pub schema: &'static str,
+    pub action: &'static str,
+    pub data: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct UrlLoadOptions {
-    pub table: String,
-    pub schema: String,
-    pub action: String,
-    pub csv_url: String,
+    pub table: &'static str,
+    pub schema: &'static str,
+    pub action: &'static str,
+    pub csv_url: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct FileLoadOptions {
-    pub table: String,
-    pub schema: String,
-    pub action: String,
-    pub file_path: String,
+    pub table: &'static str,
+    pub schema: &'static str,
+    pub action: &'static str,
+    pub file_path: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct UserAddOptions {
-    pub role: String,
-    pub username: String,
-    pub password: String,
+    pub role: &'static str,
+    pub username: &'static str,
+    pub password: &'static str,
     pub active: bool,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct UserAlterOptions {
-    pub role: Option<String>,
-    pub username: String,
-    pub password: Option<String>,
+    pub role: Option<&'static str>,
+    pub username: &'static str,
+    pub password: Option<&'static str>,
     pub active: bool,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct UserDropOptions {
-    pub username: String,
+    pub username: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct AddRoleOptions {
-    pub role: String,
+    pub role: &'static str,
     pub permission: serde_json::Value,
     pub super_user: bool,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct AlterRoleOptions {
-    pub role: String,
-    pub id: String,
+    pub role: &'static str,
+    pub id: &'static str,
     pub permission: serde_json::Value,
     pub super_user: bool,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct DropRoleOptions {
-    pub id: String,
+    pub id: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct DeleteFilesBeforeOptions {
-    pub schema: String,
-    pub table: String,
-    pub date: String,
+    pub schema: &'static str,
+    pub table: &'static str,
+    pub date: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct S3SearchOperation {
-    pub operation: String,
-    pub sql: String,
+    pub operation: &'static str,
+    pub sql: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct S3Auth {
-    pub aws_access_key_id: String,
-    pub aws_secret_access_key: String,
-    pub bucket: String,
-    pub key: String,
+    pub aws_access_key_id: &'static str,
+    pub aws_secret_access_key: &'static str,
+    pub bucket: &'static str,
+    pub key: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct S3DetailsOptions {
-    pub format: String,
+    pub format: &'static str,
     pub s3: S3Auth,
     pub search_operation: S3SearchOperation,
 }
@@ -185,67 +185,69 @@ pub enum AscDesc {
 pub struct LogsOptions {
     pub limit: Option<usize>,
     pub start: Option<usize>,
-    pub from: Option<String>,
-    pub until: Option<String>,
-    pub order: Option<String>,
+    pub from: Option<&'static str>,
+    pub until: Option<&'static str>,
+    pub order: Option<&'static str>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct GetJobOptions {
-    pub id: String,
+    pub id: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct JobsByDateOptions {
-    pub from_date: String,
-    pub to_date: String,
+    pub from_date: &'static str,
+    pub to_date: &'static str,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Clone)]
 pub struct SystemInformationOptions {
-    pub attributes: Option<Vec<String>>,
+    // pub attributes: Option<Vec<&'static str>>,
+    // pub attributes: Option<Vec<String>>,
+    pub attributes: Option<Vec<&'static str>>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct LicenseOptions {
-    key: String,
-    company: String,
+    key: &'static str,
+    company: &'static str,
 }
 
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct AddNodeOptions {
-    pub name: String,
-    pub port: String,
-    pub host: String,
+    pub name: &'static str,
+    pub port: &'static str,
+    pub host: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct UpdateNodeOptions {
-    pub name: String,
-    pub port: String,
-    pub host: String,
+    pub name: &'static str,
+    pub port: &'static str,
+    pub host: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct RemoveNodeOptions {
-    pub name: String,
+    pub name: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Attribute {
-    pub attribute: String,
+    pub attribute: &'static str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct DescribeTable {
     pub __createdtime__: usize,
     pub __updatedtime__: usize,
-    pub hash_attribute: String,
-    pub id: String,
-    pub name: String,
-    pub residence: Option<String>,
-    pub schema: String,
+    pub hash_attribute: &'static str,
+    pub id: &'static str,
+    pub name: &'static str,
+    pub residence: Option<&'static str>,
+    pub schema: &'static str,
     pub record_count: usize,
     pub attributes: Vec<Attribute>,
 }
@@ -263,6 +265,19 @@ impl Harper {
         }
     }
 
+    /// Create Schema
+    /// 
+    /// # Arguments
+    /// 
+    /// * `schema`  (required) - name of the schema you are creating
+    /// 
+    /// # Examples
+    /// 
+    /// ```
+    /// let result = harper_client.cluster_status().await.unwrap();
+    /// let data:Struct = result.json().await?;
+    /// ```
+    /// 
     pub async fn create_schema(&self, options: SchemaOption) -> Result<reqwest::Response, Error> {
         let mut map = HashMap::new();
         map.insert("operation", "create_schema");
@@ -270,7 +285,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -286,7 +301,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -302,7 +317,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -317,7 +332,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -338,7 +353,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -355,7 +370,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -376,7 +391,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -394,7 +409,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -403,7 +418,7 @@ impl Harper {
         Ok(res)
     }
 
-    pub async fn query(&self, sql_query: String) -> Result<reqwest::Response, Error> {
+    pub async fn query(&self, sql_query: &'static str, ) -> Result<reqwest::Response, Error> {
 
         let map = json!({
             "operation": "sql",
@@ -412,7 +427,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -432,7 +447,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -452,7 +467,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -471,7 +486,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -492,7 +507,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -514,7 +529,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -533,7 +548,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -552,7 +567,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -571,7 +586,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -587,7 +602,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -602,7 +617,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -623,7 +638,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -644,7 +659,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -660,7 +675,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -675,7 +690,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -696,7 +711,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -717,7 +732,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -733,7 +748,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -752,7 +767,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -770,7 +785,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -789,7 +804,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -808,7 +823,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -828,7 +843,7 @@ impl Harper {
         });
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -844,7 +859,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -861,7 +876,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -885,7 +900,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -900,7 +915,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -917,7 +932,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -936,7 +951,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -955,7 +970,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -972,7 +987,7 @@ impl Harper {
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()
@@ -981,13 +996,26 @@ impl Harper {
         Ok(res)
     }
 
+    /// System Information 
+    /// # Arguments
+    /// 
+    /// * `attributes` (optional) - string array of top level attributes desired in the response, if no value is supplied all attributes will be returned.
+    ///  Available attributes are: ['system', 'time', 'cpu', 'memory', 'disk', 'network', 'harperdb_processes']
+    /// 
+    /// A deeper dive into the return object can be found here: https://systeminformation.io/general.html
+    /// 
+    /// ```
+    /// let result = harper_client.cluster_status().await.unwrap();
+    /// let data:Struct = result.json().await?;
+    /// ```
+    /// 
     pub async fn cluster_status(&self) -> Result<reqwest::Response, Error> {
         let mut map = HashMap::new();
         map.insert("operation", "cluster_status");
 
         let res = self
             .client
-            .post(&self.config.url)
+            .post(self.config.url)
             .basic_auth(&self.config.username, Some(&self.config.password))
             .json(&map)
             .send()

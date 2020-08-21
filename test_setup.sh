@@ -49,6 +49,8 @@ curl -u HDB_ADMIN:password --location --request POST 'http://localhost:9925' \
   "hash_attribute": "id"
 }'
 
+sleep 1
+
 curl --location --request POST 'http://localhost:9925' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Basic SERCX0FETUlOOnBhc3N3b3Jk' \
