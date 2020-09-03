@@ -6,7 +6,6 @@ use std::{error::Error};
 #[macro_use]
 extern crate serde_json;
 
-
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     let config: HarperConfig = HarperConfig {
@@ -24,30 +23,53 @@ async fn main() -> Result<(), Box<dyn Error>> {
         table: "test_table",
         schema: "describe_schema_test",
     };
-    let _result = harper_client.describe_table(table_option).await?;
+    let result = harper_client.describe_table(table_option).await?;
 
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Create Schema ------------------------------------------
     let schema_option: harper::SchemaOption = harper::SchemaOption {
         schema: "newschema2",
     };
-    let _result = harper_client.create_schema(schema_option).await?;
+    let result = harper_client.create_schema(schema_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Delete Schema ------------------------------------------
     let schema_option: harper::SchemaOption = harper::SchemaOption {
         schema: "newschema22",
     };
-    let _result = harper_client.drop_schema(schema_option).await?;
+    let result = harper_client.drop_schema(schema_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     //Describe Schema ------------------------------------------
     let schema_option: harper::SchemaOption = harper::SchemaOption {
         schema: "describe_schema_test",
     };
-    let _result = harper_client.describe_schema(schema_option).await?;
+    let result = harper_client.describe_schema(schema_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Describe All ------------------------------------------
-    let _result = harper_client.describe_all().await?;
+    let result = harper_client.describe_all().await?;
 
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Create Table ------------------------------------------
     let create_table_option: harper::CreateTableOptions = harper::CreateTableOptions {
@@ -55,16 +77,24 @@ async fn main() -> Result<(), Box<dyn Error>> {
         table: "test_table",
         schema: "describe_schema_test",
     };
-    let _result = harper_client.create_table(create_table_option).await?;
+    let result = harper_client.create_table(create_table_option).await?;
 
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Drop Table  ------------------------------------------
     let table_option: harper::TableOptions = harper::TableOptions {
         table: "test2",
         schema: "newschema",
     };
-    let _result = harper_client.drop_table(table_option).await?;
+    let result = harper_client.drop_table(table_option).await?;
 
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Drop Table Attribute ------------------------------------------
     let attribute_drop_option: harper::AttributeDropOptions = harper::AttributeDropOptions {
@@ -72,7 +102,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
         schema: "testing",
         attribute: "breed",
     };
-    let _result = harper_client.drop_attribute(attribute_drop_option).await?;
+    let result = harper_client.drop_attribute(attribute_drop_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Insert Records  ------------------------------------------
     let insert_option: harper::QueryOptions = harper::QueryOptions {
@@ -89,7 +124,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
             "image": "http://lorempixel.com/640/480/nature"
         }]),
     };
-    let _result = harper_client.insert(insert_option).await?;
+    let result = harper_client.insert(insert_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Update Records ------------------------------------------
     let update_option: harper::QueryOptions = harper::QueryOptions {
@@ -100,7 +140,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
             "color": "red",            
         }]),
     };
-    let _result = harper_client.update(update_option).await?;
+    let result = harper_client.update(update_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Delete Records ------------------------------------------
     let delete_option: harper::RowDeleteOptions = harper::RowDeleteOptions {
@@ -108,7 +153,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
         schema: "testing",
         hash_values:vec!["record1234"] ,//json!([]),
     };
-    let _result = harper_client.delete(delete_option).await?;
+    let result = harper_client.delete(delete_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
 
     // Search By Hash------------------------------------------
@@ -121,7 +171,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
         get_attributes:vec!["name"],
     };
 
-    let _result = harper_client.search_by_hash(search_option).await?;
+    let result = harper_client.search_by_hash(search_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Search By Value------------------------------------------
     let search_option: harper::ValueSearchOptions = harper::ValueSearchOptions {
@@ -132,7 +187,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
         get_attributes:vec!["name"],
     };
 
-    let _result = harper_client.search_by_value(search_option).await?;
+    let result = harper_client.search_by_value(search_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // CSV Data Load ------------------------------------------
     let csv_data_load_option: harper::DataLoadOptions = harper::DataLoadOptions {
@@ -142,7 +202,13 @@ async fn main() -> Result<(), Box<dyn Error>> {
         data: "id,name,section,country,image\n1,ENGLISH POINTER,British and Irish Pointers and Setters,GREAT BRITAIN,http://www.fci.be/Nomenclature/Illustrations/001g07.jpg\n2,ENGLISH SETTER,British and Irish Pointers and Setters,GREAT BRITAIN,http://www.fci.be/Nomenclature/Illustrations/002g07.jpg\n3,KERRY BLUE TERRIER,Large and medium sized Terriers,IRELAND,\n",        
     };
 
-    let _result = harper_client.csv_data_load(csv_data_load_option).await?;
+    let result = harper_client.csv_data_load(csv_data_load_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
+
 
     // CSV URL Load ------------------------------------------
     let csv_data_load_option: harper::FileLoadOptions = harper::FileLoadOptions {
@@ -152,14 +218,28 @@ async fn main() -> Result<(), Box<dyn Error>> {
         file_path: "~/Codes/harperdb-sdk-rust/breeds.csv"
     };
 
-    let _result = harper_client.csv_file_load(csv_data_load_option).await?;
+    let result = harper_client.csv_file_load(csv_data_load_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // List Users ------------------------------------------    
-    let _result = harper_client.list_users().await?;
+    let result = harper_client.list_users().await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // User Info ------------------------------------------    
-    let _result = harper_client.user_info().await?;
+    let result = harper_client.user_info().await?;
 
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
     
     // Add User  ------------------------------------------    
     let user_option: harper::UserAddOptions = harper::UserAddOptions {
@@ -168,7 +248,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
         password: "secret",
         active: true
     };
-    let _result = harper_client.add_user(user_option).await?;
+    let result = harper_client.add_user(user_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Alter User  ------------------------------------------    
      let user_option: harper::UserAlterOptions = harper::UserAlterOptions {
@@ -177,18 +262,31 @@ async fn main() -> Result<(), Box<dyn Error>> {
         password: Some("secret2"),
         active: true
     };
-    let _result = harper_client.alter_user(user_option).await?;
+    let result = harper_client.alter_user(user_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Drop User  ------------------------------------------    
     let user_option: harper::UserDropOptions = harper::UserDropOptions {
         username: "john",
     };
-    let _result = harper_client.drop_user(user_option).await?;
+    let result = harper_client.drop_user(user_option).await?;
 
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // List Roles ------------------------------------------    
-    let _result = harper_client.list_roles().await?;
+    let result = harper_client.list_roles().await?;
 
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Add Role ------------------------------------------    
     let role_option: harper::AddRoleOptions = harper::AddRoleOptions {
@@ -217,8 +315,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
         }),
     };
 
-    let _result = harper_client.add_role(role_option).await?;
+    let result = harper_client.add_role(role_option).await?;
 
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Alter Role ------------------------------------------    
     let role_option: harper::AlterRoleOptions = harper::AlterRoleOptions {
@@ -247,21 +349,35 @@ async fn main() -> Result<(), Box<dyn Error>> {
              }
         }),
     };
-    let _result = harper_client.alter_role(role_option).await?;
+    let result = harper_client.alter_role(role_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Drop Role ------------------------------------------    
     let role_option: harper::DropRoleOptions = harper::DropRoleOptions {
         id: "33d285dc-1ddb-4700-b5bd-300a67faa247",
     };
-    let _result = harper_client.drop_role(role_option).await?;
+    let result = harper_client.drop_role(role_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // System Information ------------------------------------------    
     let system_information_option: harper::SystemInformationOptions = harper::SystemInformationOptions {
         attributes : Some(vec!["cpu"])
         // attributes :None
     };
-    let _result = harper_client.system_information(system_information_option).await?;
+    let result = harper_client.system_information(system_information_option).await?;
    
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
     // Delete Files Before------------------------------------------!!!!!!    
     // Export To S3 ------------------------------------------!!!!!!  
     // Export To Local ------------------------------------------!!!!!!  
@@ -275,7 +391,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
         order : None,
         // attributes :None
     };
-    let _result = harper_client.read_logs(read_logs_option).await?;
+    let result = harper_client.read_logs(read_logs_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Search Jobs By Start Date ------------------------------------------    
     let search_jobs_by_start_date_option: harper::JobsByDateOptions = harper::JobsByDateOptions {
@@ -283,7 +404,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
         to_date : "2020-12-30",
     };
 
-    let _result = harper_client.search_jobs_by_start_date(search_jobs_by_start_date_option).await?;
+    let result = harper_client.search_jobs_by_start_date(search_jobs_by_start_date_option).await?;
+
+    println!("{:#?}", result.status());
+    let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
+    println!("{:#?}", v);
 
     // Get Job ------------------------------------------    
     let get_job_option: harper::GetJobOptions = harper::GetJobOptions {
@@ -292,7 +418,10 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let result = harper_client.get_job(get_job_option).await?;
 
+
+    println!("{:#?}", result.status());
     let v: Value =  result.json().await?;    
+    //let data = result.text().await?;
     println!("{:#?}", v);
 
     //SQL Query ------------------------------------------  
@@ -313,16 +442,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
     
     let dog_record: Vec<DogRecord> = result.json().await?;
     println!("{:#?}", dog_record);
-
-    // println!("{:#?}", result.status());
-    
-    // let data = result.text().await?;
-    // let v: Value = serde_json::from_str(&data).unwrap();
-    // let v: Value =  result.json().await?;
-    
-    
-    // println!("{:#?}", data);
-    println!("{:#?}", v);
 
     Ok(())
 }

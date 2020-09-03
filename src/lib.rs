@@ -1547,15 +1547,6 @@ impl Harper {
         Ok(res)
     }
 
-
-
-
-
-
-
-
-
-
     /// Registration Info 
     /// 
     /// # Examples
