@@ -341,8 +341,16 @@ async fn user_info() {
 async fn add_user() {
     let harper_client =  common::get_client();
 
+    let result = harper_client.list_roles().await.unwrap();
+    assert_eq!(result.status(),200);
+
+    let data = result.text().await.unwrap();
+    let v: Value = serde_json::from_str(&data).unwrap();
+
+    let role_id: &'static str = Box::leak(v[0]["id"].as_str().unwrap().to_string().into_boxed_str());
+
     let user_option: harper::UserAddOptions = harper::UserAddOptions {
-        role: "c0a90733-1fc3-48df-a16b-d7c3011b63b2",
+        role: role_id,
         username: "created_hdb_user",
         password: "secret",
         active: true
