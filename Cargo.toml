@@ -1,9 +1,9 @@
 [package]
 name = "harperdb"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["dallen"]
 edition = "2018"
-license = "MIT OR Apache-2.0"
+license = "MIT"
 description = "The Rust SDK for HarperDB"
 homepage = "https://harperdb.io"
 repository = "https://github.com/HarperDB/harperdb-sdk-rust"
