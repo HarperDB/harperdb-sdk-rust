@@ -1,8 +1,16 @@
 [package]
-name = "harperdb_sdk_rust"
+name = "harperdb"
 version = "0.1.0"
 authors = ["dallen"]
 edition = "2018"
+license = "MIT OR Apache-2.0"
+description = "The Rust SDK for HarperDB"
+homepage = "https://harperdb.io"
+repository = "https://github.com/HarperDB/harperdb-sdk-rust"
+documentation = "https://github.com/HarperDB/harperdb-sdk-rust/blob/master/README.md"
+readme = "README.md"
+keywords = ["harperdb", "database"]
+categories = ["database"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
